@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz día Porfe Gerardo</title>
+
+  <!-- Fuente futurista -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b12;
+      --fg:#d7f3ff;
+      --neon1:#00fff0;
+      --neon2:#8a2be2;
+      --muted:#8aa0b2;
+      --card:#0f1220cc;
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background: radial-gradient(1200px 800px at 50% -10%, #14213d 0%, transparent 60%), var(--bg);
+      color: var(--fg);
+      display:grid;
+      place-items:center;
+    }
+    .card{
+      background: linear-gradient(160deg, #0d1022 0%, #0b0d1a 60%);
+      border: 1px solid #1f2a44;
+      border-radius: var(--radius);
+      padding: clamp(20px, 4vw, 36px);
+      max-width: 760px;
+      width: min(92vw, 760px);
+      box-shadow:
+        0 0 20px #0b0f2a,
+        0 0 60px #0b0f2a;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Glow sutil en los bordes */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: conic-gradient(from 180deg, var(--neon1), #5b7cfa, var(--neon2), #ff63d8, var(--neon1));
+      filter: blur(26px) saturate(120%) opacity(0.15);
+      z-index:0;
+    }
+    .content{position:relative; z-index:1}
+
+    .title{
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 5vw, 44px);
+      text-align:center;
+      line-height:1.1;
+      margin: 0 0 10px 0;
+
+      /* Gradiente en texto */
+      background: linear-gradient(90deg, var(--neon1), var(--neon2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+
+      text-shadow:
+        0 0 8px rgba(0, 255, 240, 0.25),
+        0 0 18px rgba(138, 43, 226, 0.20);
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle{
+      margin: 0 0 24px 0;
+      text-align:center;
+      color: var(--muted);
+      font-size: clamp(16px, 2.6vw, 18px);
+    }
+
+    .img-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height: 250px;
+      border: 1px dashed #263654;
+      border-radius: calc(var(--radius) - 6px);
+      padding: 14px;
+      background: linear-gradient(180deg, #0e1426, #0b0f1d);
+      position: relative;
+      overflow:hidden;
+    }
+    img{
+      width: min(520px, 86%);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,.45));
+    }
+
+    /* Fallback SVG */
+    .fallback{
+      width: 120px;
+      height: 120px;
+      opacity: .9;
+      display:none;
+    }
+    .fallback text{
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 10px;
+      fill: #7fdfff;
+    }
+    .hint{
+      text-align:center;
+      margin-top: 10px;
+      color: #95aac4;
+      font-size: 14px;
+    }
+    .small{
+      font-size: 12px;
+      opacity:.85;
+    }
+
+    /* Botón opcional para probar fallback */
+    .toolbar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin: 14px 0 0 0;
+    }
+    .btn{
+      background: #121a31;
+      color: #cfeaff;
+      border: 1px solid #20345c;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor:pointer;
+    }
+    .btn:hover{
+      border-color:#2e4b88;
+      box-shadow: 0 0 10px rgba(95,160,255,0.15);
+    }
+    .footer-note{
+      text-align:center;
+      margin-top:16px;
+      color:#7b93b0;
+      font-size: 13px;
+    }
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color:#cfeaff;
+      background:#0c1324;
+      padding:2px 6px;
+      border-radius:6px;
+      border:1px solid #1f2a44;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="content">
+      <h1 class="title">Feliz día Porfe Gerardo</h1>
+      <p class="subtitle">¡Gracias por inspirarnos a programar! 💻✨</p>
+
+      <div class="img-wrap">
+        <!-- 👇 MARCA: Reemplazá esta ruta con tu imagen -->
+        <!-- Colocá tu archivo en: /assets/images/programador.png -->
+        <img id="hero" src="/assets/images/programador.png" alt="Programador con su computadora" />
+
+        <!-- Fallback: SVG de computadora si la imagen no está -->
+        <svg class="fallback" id="fallbackIcon" viewBox="0 0 256 256" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00fff0"/>
+              <stop offset="100%" stop-color="#8a2be2"/>
+            </linearGradient>
+          </defs>
+          <rect x="28" y="40" width="200" height="120" rx="10" ry="10" fill="#0b1222" stroke="url(#grad)" stroke-width="4"/>
+          <rect x="48" y="60" width="160" height="80" rx="6" ry="6" fill="#0e1a33" stroke="#20345c" stroke-width="2"/>
+          <rect x="60" y="140" width="136" height="6" rx="3" fill="#11234a"/>
+          <rect x="70" y="168" width="116" height="12" rx="6" fill="url(#grad)"/>
+          <text x="128" y="116" text-anchor="middle">[ Imagen aquí ]</text>
+        </svg>
+      </div>
+
+      
+      
+
+    
+    </div>
+  </main>
+
+  <script>
+    // Si la imagen falla al cargar, mostramos el SVG fallback
+    const img = document.getElementById('hero');
+    const fallback = document.getElementById('fallbackIcon');
+
+    function showFallback(){
+      img.style.display = 'none';
+      fallback.style.display = 'block';
+    }
+    function hideFallback(){
+      fallback.style.display = 'none';
+      img.style.display = 'block';
+    }
+
+    img.addEventListener('error', showFallback);
+
+    // Controles opcionales para que puedas probar rápido el fallback
+    document.getElementById('breakBtn').addEventListener('click', () => {
+      img.dataset.src = img.src;     // guardo la ruta original
+      img.src = '/ruta/que/no/existe.png';
+    });
+    document.getElementById('restoreBtn').addEventListener('click', () => {
+      if(img.dataset.src){
+        img.src = img.dataset.src;
+        hideFallback();
+      }
+    });
+  </script>
+</body>
+</html>
